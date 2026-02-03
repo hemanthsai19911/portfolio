@@ -14,27 +14,28 @@ const skillCategories = [
 export function Skills() {
 
     return (
-        <section id="skills" className="py-32 relative overflow-hidden">
+        <section id="skills" className="py-20 sm:py-32 relative overflow-hidden">
             {/* Ambient Background */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-background to-background pointer-events-none" />
 
-            <div className="container mx-auto px-6 relative z-10">
+            <div className="container mx-auto px-4 sm:px-6 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-20"
+                    className="text-center mb-12 sm:mb-20"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent inline-block">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent inline-block">
                         Skills Universe
                     </h2>
-                    <p className="text-muted-foreground max-w-xl mx-auto text-lg">
+                    <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base md:text-lg px-4">
                         Explore the technologies I use to build digital experiences.
-                        Hover over a category to expand its ecosystem.
+                        <span className="hidden sm:inline"> Hover over a category to expand its ecosystem.</span>
+                        <span className="sm:hidden"> Tap a category to see details.</span>
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12 lg:gap-16">
                     {skillCategories.map((category, index) => (
                         <CategoryOrb
                             key={category.key}
@@ -54,13 +55,14 @@ function CategoryOrb({ category, skills, index }) {
 
     return (
         <div
-            className="flex flex-col items-center justify-center relative h-[300px]"
+            className="flex flex-col items-center justify-center relative h-[280px] sm:h-[300px]"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            onClick={() => setIsHovered(!isHovered)}
         >
             {/* The Central Orb */}
             <motion.div
-                className={`relative z-20 w-32 h-32 rounded-full flex items-center justify-center cursor-pointer backdrop-blur-md border border-white/10 shadow-lg ${category.bg}`}
+                className={`relative z-20 w-28 h-28 sm:w-32 sm:h-32 rounded-full flex items-center justify-center cursor-pointer backdrop-blur-md border border-white/10 shadow-lg ${category.bg}`}
                 animate={{
                     scale: isHovered ? 1.1 : 1,
                     boxShadow: isHovered
@@ -73,7 +75,7 @@ function CategoryOrb({ category, skills, index }) {
                 <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${category.color} opacity-20`} />
 
                 {/* Category Icon/Text */}
-                <h3 className="font-bold text-lg text-foreground z-30 relative text-center px-2 drop-shadow-md">
+                <h3 className="font-bold text-base sm:text-lg text-foreground z-30 relative text-center px-2 drop-shadow-md">
                     {category.name}
                 </h3>
 
@@ -94,7 +96,7 @@ function CategoryOrb({ category, skills, index }) {
             <div className="absolute inset-0 pointer-events-none z-30">
                 {skills.map((skill, i) => {
                     const angle = (i / skills.length) * 2 * Math.PI;
-                    const radius = 110;
+                    const radius = window.innerWidth < 640 ? 90 : 110; // Smaller radius on mobile
                     const x = Math.cos(angle) * (isHovered ? radius : 0);
                     const y = Math.sin(angle) * (isHovered ? radius : 0);
 
@@ -116,7 +118,7 @@ function CategoryOrb({ category, skills, index }) {
                             }}
                         >
                             <motion.div
-                                className="bg-card px-4 py-2 rounded-full border border-primary/20 shadow-lg text-sm font-semibold whitespace-nowrap text-foreground z-40"
+                                className="bg-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-primary/20 shadow-lg text-xs sm:text-sm font-semibold whitespace-nowrap text-foreground z-40"
                                 whileHover={{ scale: 1.1, zIndex: 50, borderColor: "var(--primary)" }}
                             >
                                 {skill}

@@ -13,8 +13,8 @@ export function About() {
     const marqueeSkills = [...technologies, ...technologies];
 
     return (
-        <section id="about" className="py-32 relative">
-            <div className="container mx-auto px-6">
+        <section id="about" className="py-20 sm:py-32 relative">
+            <div className="container mx-auto px-4 sm:px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -22,17 +22,17 @@ export function About() {
                     transition={{ duration: 0.5 }}
                     className="max-w-6xl mx-auto"
                 >
-                    <div className="flex items-center gap-4 mb-16 justify-center">
-                        <div className="h-px bg-gradient-to-r from-transparent via-primary to-transparent w-24" />
-                        <h2 className="text-4xl font-bold text-foreground">
+                    <div className="flex items-center gap-3 sm:gap-4 mb-12 sm:mb-16 justify-center">
+                        <div className="h-px bg-gradient-to-r from-transparent via-primary to-transparent w-12 sm:w-24" />
+                        <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
                             About Me
                         </h2>
-                        <div className="h-px bg-gradient-to-r from-transparent via-primary to-transparent w-24" />
+                        <div className="h-px bg-gradient-to-r from-transparent via-primary to-transparent w-12 sm:w-24" />
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-16 items-center">
+                    <div className="grid md:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center">
                         {/* Interactive Text Column */}
-                        <div className="space-y-8 text-lg text-muted-foreground leading-relaxed relative z-10 order-2 md:order-1">
+                        <div className="space-y-6 sm:space-y-8 text-base sm:text-lg text-muted-foreground leading-relaxed relative z-10 order-2 md:order-1">
                             <motion.p
                                 initial={{ x: -30, opacity: 0 }}
                                 whileInView={{ x: 0, opacity: 1 }}
@@ -55,24 +55,24 @@ export function About() {
                             </motion.p>
 
                             {/* Tech Marquee */}
-                            <div className="pt-8">
-                                <p className="mb-4 text-sm font-bold uppercase tracking-widest text-primary">Tech Arsenal</p>
+                            <div className="pt-6 sm:pt-8">
+                                <p className="mb-3 sm:mb-4 text-xs sm:text-sm font-bold uppercase tracking-widest text-primary">Tech Arsenal</p>
                                 <div className="relative flex overflow-hidden mask-gradient-x py-2">
-                                    <div className="animate-marquee flex gap-4 whitespace-nowrap">
+                                    <div className="animate-marquee flex gap-3 sm:gap-4 whitespace-nowrap">
                                         {marqueeSkills.map((tech, index) => (
                                             <span
                                                 key={`${tech}-${index}`}
-                                                className="px-4 py-2 bg-secondary/30 rounded-full text-sm font-mono text-secondary-foreground border border-white/5 hover:border-primary/50 transition-colors cursor-default"
+                                                className="px-3 sm:px-4 py-1.5 sm:py-2 bg-secondary/30 rounded-full text-xs sm:text-sm font-mono text-secondary-foreground border border-white/5 hover:border-primary/50 transition-colors cursor-default"
                                             >
                                                 {tech}
                                             </span>
                                         ))}
                                     </div>
-                                    <div className="absolute top-0 animate-marquee2 flex gap-4 whitespace-nowrap ml-4">
+                                    <div className="absolute top-0 animate-marquee2 flex gap-3 sm:gap-4 whitespace-nowrap ml-4">
                                         {marqueeSkills.map((tech, index) => (
                                             <span
                                                 key={`${tech}-${index}-2`}
-                                                className="px-4 py-2 bg-secondary/30 rounded-full text-sm font-mono text-secondary-foreground border border-white/5 hover:border-primary/50 transition-colors cursor-default"
+                                                className="px-3 sm:px-4 py-1.5 sm:py-2 bg-secondary/30 rounded-full text-xs sm:text-sm font-mono text-secondary-foreground border border-white/5 hover:border-primary/50 transition-colors cursor-default"
                                             >
                                                 {tech}
                                             </span>
@@ -84,7 +84,7 @@ export function About() {
 
                         {/* Liquid Morphing Image */}
                         <div className="relative group flex justify-center order-1 md:order-2">
-                            <div className="relative w-80 h-80">
+                            <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80">
                                 {/* Animated Blob Layer */}
                                 <div className="absolute inset-0 bg-primary/20 blur-3xl animate-pulse-slow rounded-full" />
 
@@ -115,7 +115,7 @@ export function About() {
                                 >
                                     {/* Placeholder/Actual Image */}
                                     <div className="w-full h-full bg-secondary flex items-center justify-center relative group-hover:scale-110 transition-transform duration-500">
-                                        <span className="text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white/20 to-white/5">KH</span>
+                                        <span className="text-6xl sm:text-7xl md:text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white/20 to-white/5">KH</span>
                                         <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors" />
                                     </div>
                                 </motion.div>

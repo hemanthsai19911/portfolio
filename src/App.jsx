@@ -23,9 +23,9 @@ function App() {
       <CodeSymbols />
 
       {/* Main Content */}
-      <div className="relative z-10">
+      <div className="relative z-10 w-full">
         <Navbar />
-        <main className="w-full max-w-[1600px] mx-auto">
+        <main className="w-full max-w-[1600px] mx-auto overflow-x-hidden">
           <Hero />
           <About />
           <Skills />

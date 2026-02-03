@@ -37,12 +37,12 @@ export function Navbar() {
             className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
                 isScrolled
-                    ? "bg-background/80 backdrop-blur-md border-b border-border py-4"
-                    : "bg-transparent py-6"
+                    ? "bg-background/80 backdrop-blur-md border-b border-border py-3 sm:py-4"
+                    : "bg-transparent py-4 sm:py-6"
             )}
         >
-            <div className="container mx-auto px-6 flex items-center justify-between">
-                <a href="#" className="text-2xl font-bold tracking-tighter hover:text-primary transition-colors">
+            <div className="container mx-auto px-4 sm:px-6 flex items-center justify-between">
+                <a href="#" className="text-xl sm:text-2xl font-bold tracking-tighter hover:text-primary transition-colors">
                     KH<span className="text-primary">.</span>
                 </a>
 
@@ -74,12 +74,21 @@ export function Navbar() {
                 </div>
 
                 {/* Mobile Toggle */}
-                <button
-                    className="md:hidden text-foreground hover:text-primary"
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                >
-                    {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
+                <div className="flex md:hidden items-center gap-4">
+                    <button
+                        onClick={toggleTheme}
+                        className="p-2 rounded-full hover:bg-accent transition-colors"
+                        aria-label="Toggle Theme"
+                    >
+                        {isDark ? <Sun size={20} /> : <Moon size={20} />}
+                    </button>
+                    <button
+                        className="text-foreground hover:text-primary"
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    >
+                        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+                </div>
             </div>
 
             {/* Mobile Menu */}
@@ -91,12 +100,12 @@ export function Navbar() {
                         exit={{ opacity: 0, height: 0 }}
                         className="md:hidden bg-background border-b border-border overflow-hidden"
                     >
-                        <div className="flex flex-col items-center py-8 space-y-6">
+                        <div className="flex flex-col items-center py-6 space-y-5">
                             {navLinks.map((link) => (
                                 <a
                                     key={link.name}
                                     href={link.href}
-                                    className="text-lg font-medium hover:text-primary"
+                                    className="text-base sm:text-lg font-medium hover:text-primary"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     {link.name}
@@ -105,6 +114,7 @@ export function Navbar() {
                             <a
                                 href="/resume.pdf"
                                 className="px-6 py-2 text-sm font-medium text-primary-foreground bg-primary rounded-full hover:bg-primary/90"
+                                onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 Resume
                             </a>

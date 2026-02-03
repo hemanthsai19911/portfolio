@@ -52,9 +52,9 @@ export function Hero() {
     };
 
     return (
-        <section className="min-h-screen flex items-center justify-center pt-20 pb-10 relative" id="hero">
+        <section className="min-h-screen flex items-center justify-center pt-20 pb-10 px-4 sm:px-6 relative" id="hero">
             <motion.div
-                className="container mx-auto px-6"
+                className="container mx-auto"
                 style={{ y, opacity }}
             >
                 <motion.div
@@ -65,14 +65,14 @@ export function Hero() {
                 >
                     <motion.p
                         variants={itemVariants}
-                        className="text-primary font-medium mb-4 text-lg"
+                        className="text-primary font-medium mb-3 sm:mb-4 text-sm sm:text-base md:text-lg"
                     >
                         Hi, my name is
                     </motion.p>
 
                     <motion.h1
                         variants={itemVariants}
-                        className="text-5xl md:text-7xl font-bold tracking-tight mb-6 relative"
+                        className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight mb-4 sm:mb-6 relative"
                     >
                         <span className="bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent animate-gradient">
                             {name}
@@ -81,7 +81,7 @@ export function Hero() {
 
                     <motion.h2
                         variants={itemVariants}
-                        className="text-4xl md:text-6xl font-bold tracking-tight text-muted-foreground mb-8 min-h-[80px]"
+                        className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight text-muted-foreground mb-6 sm:mb-8 min-h-[60px] sm:min-h-[80px]"
                     >
                         {displayText}
                         <motion.span
@@ -95,16 +95,16 @@ export function Hero() {
 
                     <motion.p
                         variants={itemVariants}
-                        className="text-lg text-muted-foreground max-w-xl mb-12 leading-relaxed"
+                        className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl mb-8 sm:mb-12 leading-relaxed"
                     >
                         {summary}
                     </motion.p>
 
                     <motion.div
                         variants={itemVariants}
-                        className="flex flex-wrap gap-4 items-center"
+                        className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 items-center sm:items-start"
                     >
-                        <MagneticButton className="group inline-flex items-center px-8 py-4 text-sm font-medium text-primary-foreground bg-gradient-to-r from-primary to-blue-600 rounded-lg hover:shadow-2xl hover:shadow-primary/50 transition-all duration-300 relative overflow-hidden">
+                        <MagneticButton className="group inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-sm font-medium text-primary-foreground bg-gradient-to-r from-primary to-blue-600 rounded-lg hover:shadow-2xl hover:shadow-primary/50 transition-all duration-300 relative overflow-hidden">
                             <motion.span
                                 className="absolute inset-0 bg-gradient-to-r from-blue-600 to-primary"
                                 initial={{ x: '-100%' }}
@@ -118,7 +118,7 @@ export function Hero() {
                         </MagneticButton>
 
                         <motion.div
-                            className="flex items-center gap-6 px-4"
+                            className="flex items-center gap-4 sm:gap-6"
                             variants={itemVariants}
                         >
                             {[
@@ -145,7 +145,7 @@ export function Hero() {
                                             repeat: Infinity,
                                         }}
                                     />
-                                    <Icon className="relative z-10 text-muted-foreground group-hover:text-primary transition-colors" size={24} />
+                                    <Icon className="relative z-10 text-muted-foreground group-hover:text-primary transition-colors" size={20} />
                                 </motion.a>
                             ))}
                         </motion.div>
@@ -155,7 +155,7 @@ export function Hero() {
 
             {/* Scroll Indicator */}
             <motion.div
-                className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+                className="hidden sm:block absolute bottom-10 left-1/2 transform -translate-x-1/2"
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
             >

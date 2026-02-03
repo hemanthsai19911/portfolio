@@ -2,11 +2,11 @@ import { motion } from 'framer-motion';
 
 export function FloatingElements() {
     const shapes = [
-        { size: 60, left: '10%', top: '20%', duration: 20, color: 'hsl(var(--primary) / 0.1)' },
-        { size: 80, left: '80%', top: '10%', duration: 25, color: 'hsl(var(--primary) / 0.08)' },
-        { size: 40, left: '70%', top: '60%', duration: 18, color: 'hsl(var(--primary) / 0.12)' },
-        { size: 100, left: '15%', top: '70%', duration: 30, color: 'hsl(var(--primary) / 0.06)' },
-        { size: 50, left: '90%', top: '80%', duration: 22, color: 'hsl(var(--primary) / 0.09)' },
+        { size: 60, left: '10%', top: '20%', duration: 20, color: 'hsl(var(--primary) / 0.1)', mdHide: false },
+        { size: 80, left: '80%', top: '10%', duration: 25, color: 'hsl(var(--primary) / 0.08)', mdHide: false },
+        { size: 40, left: '70%', top: '60%', duration: 18, color: 'hsl(var(--primary) / 0.12)', mdHide: true },
+        { size: 100, left: '15%', top: '70%', duration: 30, color: 'hsl(var(--primary) / 0.06)', mdHide: false },
+        { size: 50, left: '90%', top: '80%', duration: 22, color: 'hsl(var(--primary) / 0.09)', mdHide: true },
     ];
 
     return (
@@ -14,7 +14,7 @@ export function FloatingElements() {
             {shapes.map((shape, index) => (
                 <motion.div
                     key={index}
-                    className="absolute rounded-full blur-3xl"
+                    className={`absolute rounded-full blur-3xl ${shape.mdHide ? 'hidden md:block' : ''}`}
                     style={{
                         width: shape.size,
                         height: shape.size,
@@ -41,13 +41,15 @@ export function FloatingElements() {
 
 export function CodeSymbols() {
     const symbols = ['<', '>', '{', '}', '/', '*', '=', ';'];
+    // Use fewer symbols on mobile
+    const count = typeof window !== 'undefined' && window.innerWidth < 768 ? 10 : 20;
 
     return (
         <div className="fixed inset-0 pointer-events-none overflow-hidden z-0 opacity-5">
             {Array.from({ length: 20 }).map((_, i) => (
                 <motion.div
                     key={i}
-                    className="absolute text-4xl font-mono text-primary"
+                    className={`absolute text-2xl sm:text-4xl font-mono text-primary ${i >= 10 ? 'hidden sm:block' : ''}`}
                     style={{
                         left: `${Math.random() * 100}%`,
                         top: `${Math.random() * 100}%`,
